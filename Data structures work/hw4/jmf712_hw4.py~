@@ -1,0 +1,95 @@
+from random import randint
+import copy
+
+def split_by_sign(lst, low, high):
+    if low >= high:
+        return lst
+    if lst[low] < 0 and lst[high] >=0:
+        return split_by_sign(lst,low+1,high-1)
+    if lst[low] >= 0 and lst[high] < 0:
+        lst[low], lst[high] = lst[high], lst[low]
+        return split_by_sign(lst,low+1,high-1)
+    if lst[low] < 0 and lst[high] <0:
+        return split_by_sign(lst,low+1,high)
+    if lst[low] >=0 and lst[high] >= 0:
+        return split_by_sign(lst,low,high-1)
+
+def test_split():
+    #I can just leave these in right?
+    test_passed = True
+    for x in range(100):
+        test = []
+        for y in range(randint(0,200)):
+            test.append(randint(-1000,1000))
+        split_by_sign(test,0,len(test)-1)
+        for y in range(1,len(test)):
+            if test[y-1] >=0 and test[y] < 0:
+                test_passed = False
+    if test_passed:
+        print("TEST PASSED")
+    else:
+        print("TEST FAILED")
+
+def permutations(lst,low,high):
+    if low>= high:
+        return [[lst[low]]]
+    ans = []
+    perms = permutations(lst,low+1,high)
+    for perm in perms:
+        for index in range(len(perm)+1):
+            permCopy = copy.copy(perm)
+            permCopy.insert(index,lst[low])
+            ans.append(permCopy)
+    return ans
+
+def find_duplicates(lst):
+    found = {}
+    ans = []
+    for x in lst:
+        if x in found:
+            if found[x] == 1:
+                ans.append(x)
+                found[x]+=1
+        else:
+            found[x] = 1
+    return ans
+
+def test_duplicates():
+    test=[2,4,4,1,2]
+    print(find_duplicates(test))
+    test=[]
+    print(find_duplicates(test))
+    test=[1,2,4,4,1,2]
+    print(find_duplicates(test))
+    test=[2,32,2,2,3,4,4,56,6,6,6,4,4,1,2]
+    print(find_duplicates(test))
+    test=[2]
+    print(find_duplicates(test))
+    test=[2,2,2,2]
+    print(find_duplicates(test))
+
+def remove_all(lst,value):
+    count = 0
+    for index in range(len(lst)):
+        if lst[index] == value:
+            count +=1
+        else:
+            lst[index - count] = lst[index]
+    for x in range(count):
+        lst.pop()
+
+def test_remove():
+    test_passed = True
+    for x in range(200):
+        test = []
+        for x in range(randint(0,50)):
+            test.append(randint(-10,10))
+        test2 = copy.deepcopy(test)
+        removal = randint(-10,10)
+        remove_all(test,removal)
+        if test != [x for x in test2 if x!=removal]:
+            test_passed = False    
+    if test_passed:
+        print("TEST PASSED")
+    else:
+        print("TEST FAILED")

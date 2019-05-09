@@ -1,0 +1,9 @@
+def flat_list(lst,low=0,high=-1):
+    if high == -1:
+        high = len(lst)-1
+    if type(lst[low]) is list:
+        return flat_list(lst[low])
+    if low == high:
+        return [lst[low]]
+    return flat_list(lst,low,(low+high)/2) + flat_list(lst,((low+high)/2)+1,high)
+    

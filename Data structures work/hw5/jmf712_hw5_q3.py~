@@ -1,0 +1,18 @@
+def interpret(variables, exp):
+    nums= []
+    symbols = ["+","-","*","/"]
+    for character in exp:
+        if character in symbols:
+            if character == "+":
+                nums.append(float(nums.pop()) + float(nums.pop())) 
+            if character == "-":
+                nums.append(float(nums.pop()) - float(nums.pop())) 
+            if character == "*":
+                nums.append(float(nums.pop()) * float(nums.pop())) 
+            if character == "/":
+                nums.append(float(nums.pop()) / float(nums.pop())) 
+        if character in variables:
+            nums.append(variables[character])
+        else:
+            nums.append(character)
+    

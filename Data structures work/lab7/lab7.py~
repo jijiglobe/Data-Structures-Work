@@ -1,0 +1,9 @@
+def balanced_expression(input):
+    myStack = ArrayStack()
+    for x in input:
+        if x in "{[(":
+            myStack.push(x)
+        if x in "]})":
+            if myStack.pop() != x:
+                return False
+    return True

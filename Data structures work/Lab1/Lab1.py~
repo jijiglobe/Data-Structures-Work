@@ -1,0 +1,26 @@
+def add_binary(num_str, num_str2):
+    ans = ""
+    longer = num_str
+    shorter = num_str2
+    if len(num_str) < len(num_str2):
+        longer = num_str2
+        shorter = num_str
+    carried = False
+    for index in range(len(shorter)):
+        sumDigits = num(shorter[index * -1]) + sumDigits(longer[index * -1])
+        if sumDigits == 0:
+            if carried:
+                ans = "1" + ans
+            else:
+                ans = "0" + ans
+            carried = False
+        if sumDigits == 1:
+            ans = "1" + ans
+        if sumDigits == 2:
+            if carried:
+                ans = "1" + ans
+            else:
+                ans = "0" + ans
+                carried = True
+    ans = longer.substring(0,longer - len(shorter))
+    return ans

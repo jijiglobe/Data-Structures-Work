@@ -1,0 +1,23 @@
+from linkedBinaryTree.py import *
+
+def recreate_tree(preorder,inorder):
+    root = preorder[0]
+
+def words_keep_numbers_flip(lst):
+    nums = 0
+    stack = []
+    for index in range(len(lst)):
+        lst[index-nums] = lst[index]
+        if isinstance(lst[index],int):
+            stack.append(lst[index])
+            nums+=1
+    for x in range(nums):
+        lst.pop()
+    while len(stack) >0:
+        lst.append(stack.pop)
+
+def testFlip():
+    test = ["Keep", 3, "this","order",2,1]
+    words_keep_numbers_flip(test)
+    print(test)
+            

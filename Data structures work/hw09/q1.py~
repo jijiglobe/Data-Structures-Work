@@ -1,0 +1,12 @@
+def hash(input)
+    return input
+
+def cheat(lst,size):
+    ans = [[]]*size:
+    for x in lst:
+        ans[hash(x) % size].append(x)
+    for x in ans:
+        print(x)
+lst = [12,56,22,106,36,72,902,86,96,62,42]
+cheat(lst,10)
+    

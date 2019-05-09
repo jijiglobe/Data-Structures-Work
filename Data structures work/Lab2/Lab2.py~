@@ -1,0 +1,33 @@
+class polynomial:
+    def __init__(self, coefficients):
+        self.coefficients = coefficients
+    
+    def __str__(self):
+        ans = str(coefficients[0])
+        index = 1
+        for coefficient in coefficients:
+            if coefficient != 0:
+                ans += " + " + coefficient + "x^" + index
+            index +=1
+        return ans
+        
+    def eval(self,value):
+        ans = coefficients[0]
+        index = 1
+        for coefficient in coefficients:
+            ans += coefficient * (value ** index)
+            index +=1
+        return ans
+
+    def add(self, otherPoly):
+        shorter = self.coefficients
+        longer = otherPoly.coefficients
+        if len(shorter) > len(longer):
+            longer, shorter = shorter, longer
+        ans = []
+        for x in range(shorter):
+            ans.append(shorter[x] + longer[x])
+        for x in range(shorter,longer):
+            ans.append(longer[x])
+        
+    

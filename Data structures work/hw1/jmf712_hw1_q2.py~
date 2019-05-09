@@ -1,0 +1,7 @@
+def shift(list, step):
+    index = step
+    while index % len(list) != 0:
+        store = list[index]
+        list[index] = list[0]
+        index += step
+    return list

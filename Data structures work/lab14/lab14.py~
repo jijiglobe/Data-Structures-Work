@@ -1,0 +1,29 @@
+class PriorityQueue:
+    class Node:
+        def __init__(self,key,value):
+            self.key = key
+            self.value = value
+            self.next = None
+    def __init__(self,head = None):
+        self.head = head
+    
+    def push(self,key, value):
+        newNode = PriorityQueue.Node(key,value)
+        if self.head == None:
+            self.head = newNode
+        else:
+            current = self.head
+            while current.key < key:
+                current = current.next
+            holder = current.next
+            current.next = newNode
+            newNode.next = holder
+    def pop(self):
+        if self.head == None:
+            return None
+        val = self.head.key
+        self.head = self.head.next
+        return val
+
+class PriorityTree:
+    def __init__

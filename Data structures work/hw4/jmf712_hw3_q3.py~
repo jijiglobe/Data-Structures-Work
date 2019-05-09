@@ -1,0 +1,11 @@
+def find_duplicates(lst):
+    found = {}
+    ans = []
+    for x in lst:
+        if x in found:
+            if found[x] == 1:
+                ans.append(x)
+                found[x]+=1
+        else:
+            found[x] = 1
+    return ans

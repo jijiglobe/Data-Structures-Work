@@ -1,0 +1,22 @@
+def seeTheTruth(word):
+    stripper = [",","'",'"']
+    return word.strip(stripper).lower()
+class InvertedFile:
+    def __init__(self, file_name):
+        file = open(filename,"r"):
+        fileStr = file.read()
+        wordList = fileStr.split()
+        self.map = {}
+        index = 0
+        for word in wordList:
+            trueWord = seeTheTruth(word)
+            if word not in self.map:
+                self.map[trueWord] = [index]
+            else:
+                self.map[trueWord].append(index)
+    def indices(self,word):
+        trueWord = seeTheTruth(word):
+        if trueWord in self.map:
+            return self.map[trueWord]
+        return []
+            

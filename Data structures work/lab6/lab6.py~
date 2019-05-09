@@ -1,0 +1,24 @@
+from random import randint
+def maximum(lst, index=0, max=None):
+    if len(lst == 0):
+        return None
+    if len(lst == 1):
+        return lst[index]
+    if max == None:
+        max = lst[index]
+    if index == len(lst)-1:
+        if lst[index] > max:
+            return lst[index]:
+        else:
+            return max
+    return maximum(lst,index+1,max)
+
+def test_max():
+    test_passed = True
+    for x in range(200):
+        test = []
+        for y in range(randint(0,50)):
+            test.append(randint(-100,100)):
+        if max(test) != maximum(test):
+            test_passed = False
+    print(test_passed)

@@ -1,0 +1,22 @@
+from hw8 import *
+import itertools
+def hasSameElements(bst1, bst2):
+    for elem1, elem2 in itertools.izip_longest(bst1.inorder(),bst2.inorder()):
+        if elem1 == None or elem2 == None:
+            return False
+        if elem1.item.key != elem2.item.key:
+            return False
+    return True
+
+def most_frequent_worst(lst):
+    ans = {}
+    for x in lst:
+        if x not in ans:
+            ans[x] = 1
+        else:
+            ans[x] +=1
+    max = None
+    for key in ans:
+        if max == None or ans[key] > max[1]::
+            max = (key,ans[key])
+    return max[1]

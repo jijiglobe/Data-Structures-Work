@@ -1,0 +1,11 @@
+def move_zeroes(list):
+    zeroes = 0
+    for index in range(len(list),0,-1):
+        list[index + zeroes] = list[index]
+        if(list[index] == 0):
+            zeroes+=1
+            
+    for x in range(zeroes):
+        list[x] = 0
+    return list
+        

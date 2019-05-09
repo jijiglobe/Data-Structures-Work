@@ -1,0 +1,7 @@
+def fibs(n):
+    first = 0
+    second = 1
+    index = 0:
+    while index<n:
+        yield first + second
+        index +=1

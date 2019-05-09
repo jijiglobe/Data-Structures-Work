@@ -1,0 +1,19 @@
+from DoublyLinkedList import *
+from LinkedBinaryTree import *
+
+def flatten(nestedList):
+    cursor = nestedList.header
+    nexts = []
+    while cursor != None:
+        if isinstance(cursor.data,DoublyLinkedList):
+            nexts.append(cursor.next)
+            cursor.next = cursor.data.header
+            cursor.next.prev = cursor
+            ran = False
+        while len(nexts) != 0 and cursor.next == None:
+            cursor.next = nexts.pop()
+            cursor.next.prev = cursor
+            cursor = cursor.next
+            ran = True
+        if not ran and cursor != None:
+            cursor = cursor.next

@@ -1,0 +1,13 @@
+class altQueue:
+    def __init__(self):
+        self.inputs = []
+        self.outputs = []
+        self.size = 0
+    def enqueue(self, value):
+        self.size+=1
+        self.inputs.append(value)
+    def dequeue(self):
+        if len(self.outputs) <=0:
+            while(len(self.inputs) > 0):
+                self.outputs.append(self.inputs.pop())
+        return self.outputs.pop()
